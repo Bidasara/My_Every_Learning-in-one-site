@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="grid">
+
+        <!-- Guess the number-->
+        <section id="guess-section" aria-labelledby="guess-title"  class="grid-boxes" >
+            <header id="guess-title" class="heading">Guess The Number</header>
+            <p id="display_content" aria-live="polite">Click on Generate Button</p>
+            <input id="guess-input" type="number" placeholder="Enter number here" required>
+            <div class="btns">
+                <button type="button" id="generate-btn" class="btn1">Generate</button>
+                <button type="submit" id="guess-btn" class="btn1">Guess</button>
+            </div>
+        </section>
+
+        <!-- Snake Water Gun -->
+        <section id="swg-section" aria-labelledby="swg-title" class="grid-boxes">
+            <header id="swg-title" class="heading">Snake Water Gun</header>
+            <p id="display_content2" aria-live="polite">Click on Start New</p>
+            <input id="swg-input" type="text" placeholder="Enter your move" required>
+            <div class="btns2">
+                <button type="button" id="start-btn" class="btn2">Start New</button>
+                <button type="submit" id="play-btn" class="btn2">Play</button>
+            </div>
+        </section>
+
+        <!-- Random Jokes -->
+        <section id="joke-section" aria-labelledby="joke-title" class="grid-boxes">
+            <header id="joke-title" class="heading">Random Jokes</header>
+            <p id="display_content3" aria-live="polite"></p>
+            <button type="submit" id="joke-btn">Give me a Joke</button>
+        </section>
+
+        <!-- Analog Clock -->
+        <section id="clock-section" aria-labelledby="clock-title" class="grid-boxes">
+            <div id="clock" role="img" aria-label="Analog Clock">
+                <div class="twelve">12</div>
+                <div class="three">3</div>
+                <div class="six">6</div>
+                <div class="nine">9</div>
+                <div class="hour"></div>
+                <div class="min"></div>
+                <div class="sec"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <!-- Bugs Section-->
+        <section id="bugs-section" aria-labelledby="bugs-title" class="grid-boxes">
+            <header id="bugs-title" class="heading">Bugs</header>
+            <p id="display_content5" aria-live="polite">Don't Press this button</p>
+            <button id="bugs-btn" aria-label="Mysterious Red Button"></button>
+        </section>
+
+        <!-- Todo List -->
+        <section id="todo-section" aria-labelledby="todo-title" class="grid-boxes">
+            <header id="todo-title" class="heading">Todo List</header>
+            <input type="text" id="todo-input" placeholder="Enter your task">
+            <div class="hidden-text">
+                <ul id="myList"></ul>
+            </div>
+            <div class="btns6">
+                <button id="show-list-btn" class="btn6">Show List</button>
+                <button id="add-to-list-btn" class="btn6">Add to List</button>
+                <button id="clear-btn">Clear</button>
+                <button id="back-btn">Back</button>
+            </div>
+        </section>
+
+        <!-- Password Creator-->
+        <section id="password-section" aria-labelledby="password-title" class="grid-boxes">
+            <header id="password-title" class="heading">Password Creator</header>
+            <input id="password-length" type="number" placeholder="Enter length">
+            <div class="btns7">
+                <button id="generate-password-btn" class="btn7">Generate</button>
+                <button id="copy-password-btn" class="btn7">Copy</button>
+            </div>
+        </section>
+
+        <!-- Alarm Clock -->
+        <section id="alarm-section" aria-labelledby="alarm-title" class="grid-boxes">
+            <header id="alarm-title" class="heading">Alarm Clock</header>
+            <div class="time">
+                <div id="hour">12</div>
+                <input type="number" id="hr" placeholder="HH" required>
+                <span class="colon">:</span>
+                <div id="minute">12</div>
+                <input type="number" id="min" placeholder="MM" required>
+                <span class="colon">:</span>
+                <div id="second">12</div>
+                <input type="number" id="sec" placeholder="SS" required>
+            </div>
+            <button id="new-alarm-btn" class="btn8">Set New Alarm</button>
+            <button type="submit" id="set-alarm-btn" class="btn8">Set</button>
+        </section>
+
+    </main>
+<script src="script.js"></script>
+<script src="modified-bug.js"></script>
+</body> 
+</html>
