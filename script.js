@@ -237,28 +237,75 @@ document.getElementsByClassName("btn7")[0].addEventListener("click",function(){
     document.getElementsByClassName("btn7")[0].style.display='none';
 })
 
+function generatePassword() {
+    let length = document.getElementById("password-length").value;
+    
+    let pass_generator = new PasswordGenerator(length);
+    let password = pass_generator.generate();
+
+    document.getElementById("password-length").type = 'text';
+    document.getElementById("password-length").value = password;
+
+    document.getElementsByClassName("btn7")[1].style.display = 'block';
+}
+
 document.getElementById("password-length").addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        let length = document.getElementById("password-length").value;
-        
-        let pass_generator = new PasswordGenerator(length);
-        let password = pass_generator.generate()
-
-        document.getElementById("password-length").type='text';
-        document.getElementById("password-length").value=password;
-
-        document.getElementsByClassName("btn7")[1].style.display='block';
+        generatePassword();
     }
 });
 
-document.getElementsByClassName("btn7")[1].addEventListener("click",function(){
-    navigator.clipboard.writeText(document.getElementById("password-length").value);
-    document.getElementsByClassName("btn7")[1].style.display='none';
-    document.getElementsByClassName("btn7")[0].style.display='block';
-    document.getElementById("password-length").style.display='none';
-    document.getElementById("password-length").val='';
-    document.getElementById("password-length").type='number';
-})
+document.getElementById("password-length").addEventListener('touchend', function(event) {
+    if (event.target.value.trim() !== '') {
+        setTimeout(generatePassword, 100);
+    }
+});
+
+document.getElementsByClassName("btn7")[1].addEventListener("click", function() {
+    copyToClipboard(document.getElementById("password-length").value);
+});
+
+function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+            .then(() => {    
+                document.getElementsByClassName("btn7")[1].style.display = 'none';
+                document.getElementsByClassName("btn7")[0].style.display = 'block';
+                document.getElementById("password-length").style.display = 'none';
+                document.getElementById("password-length").value = '';
+                document.getElementById("password-length").type = 'number';
+            })
+            .catch(err => {
+                fallbackCopyToClipboard(text);
+            });
+    } else {
+        fallbackCopyToClipboard(text);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    
+    try {
+        document.execCommand("copy");
+        alert("Password copied to clipboard!");
+    } catch (err) {
+        alert("Unable to copy to clipboard. Please copy the password manually.");
+    }
+    
+    document.body.removeChild(tempInput);
+    
+    document.getElementsByClassName("btn7")[1].style.display = 'none';
+    document.getElementsByClassName("btn7")[0].style.display = 'block';
+    document.getElementById("password-length").style.display = 'none';
+    document.getElementById("password-length").value = '';
+    document.getElementById("password-length").type = 'number';
+}
 
 
 // For exercise 8
@@ -367,9 +414,26 @@ function timenow(){
 }
 setInterval(timenow,1000);
 
+let be;
+let p1 = new Promise((resolve,reject)=>{
+    let a = Math.random()
+    if(a<0.5){
+        reject("Value generated was smaller than 0.5")
+    }    
+    else{
+        be=setInterval(()=>{
+            console.log("Yes i am done")
+            resolve("Done 1")
+        },2000);
+    }
+})
 
-
-
+p1.then(a=>{
+    console.log(a)
+    clearInterval(be)
+}).catch(e=>{
+    console.log(e)
+})
 
 
 
